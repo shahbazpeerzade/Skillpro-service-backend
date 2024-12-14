@@ -1,0 +1,28 @@
+server:
+  port: 8080 # Port for the Gateway service
+
+spring:
+  application:
+     name: api-gateway # Name of the Gateway application
+  cloud:
+    gateway:
+      routes:
+        - id: PRODUCT-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/products/**
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**
+        - id: CATEGORY-SERVICE
+          uri: lb://CATEGORY-SERVICE
+          predicates:
+            - Path=/api/categories/**
+
+eureka:
+  client:
+    register-with-eureka: true # Register the Gateway with Eureka
+    fetch-registry: true # Fetch the registry from Eureka
+  instance:
+    prefer-ip-address: true # Prefer IP address for registration

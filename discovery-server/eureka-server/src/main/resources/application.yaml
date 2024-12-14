@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: eureka-server
+ # Disable if not using a config server
+
+server:
+  port: 8761 # Eureka server runs on port 8761
+
+eureka:
+  client:
+    register-with-eureka: false  # Eureka server does not register itself
+    fetch-registry: false  # Eureka server does not fetch from other servers

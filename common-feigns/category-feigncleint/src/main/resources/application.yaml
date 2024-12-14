@@ -1,0 +1,15 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: product-service   # Name of your Spring Boot application
+
+  cloud:
+    feign:
+      discovery:
+        enabled: false  # Disable service discovery if you're directly using URLs
+
+category-service:
+  url: http://localhost:8084  # URL for Category Service running on port 8084
+
+
